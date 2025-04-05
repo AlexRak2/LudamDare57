@@ -6,6 +6,7 @@ namespace LD57.Echo
 {
 public class EchoScanner : MonoBehaviour
 {
+    public static EchoScanner Instance;
     [SerializeField] private ParticleSystem echoParticleSystem;
     [SerializeField] private SphereCollider echoCollider;
     [SerializeField] private float echoInitialScale = 0.1f;
@@ -14,24 +15,20 @@ public class EchoScanner : MonoBehaviour
     private Material particleMaterial;
     [SerializeField] private float initialFloat = 0.5f;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
         // Get the material from the Particle System's renderer
         particleMaterial = echoParticleSystem.GetComponent<ParticleSystemRenderer>().material;
     }
-    private void OnEnable()
-    {
-        InputManager.EchoActionTriggered += OnEchoActionTriggered;
-    }
-    private void OnEchoActionTriggered()
+    public void EmitEcho()
     {
         echoParticleSystem.Play();
         StartCoroutine(ScaleCollider());
         StartCoroutine(DimParticleMaterial());
-    }
-    private void OnDestroy()
-    {
-        InputManager.EchoActionTriggered -= OnEchoActionTriggered;
     }
     private IEnumerator ScaleCollider()
     {

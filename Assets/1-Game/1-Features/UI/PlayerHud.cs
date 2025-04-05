@@ -1,5 +1,6 @@
 using System;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace Game.UI
@@ -11,7 +12,7 @@ namespace Game.UI
         [SerializeField] private GameObject _rightInteractionObj;
         [SerializeField] private GameObject _leftInteractionObj;
         [SerializeField] private TMP_Text _interactionRightText;
-        [SerializeField] private TMP_Text _interactionLeftText;
+        [SerializeField] private TMP_Text _interactionLeftText, echoCountText;
         
         private void Awake()
         {
@@ -38,6 +39,10 @@ namespace Game.UI
         public void HideLeftInteractionUI()
         {
             _leftInteractionObj.SetActive(false);
+        }
+        public void UpdateEchoCount(int2 count)
+        {
+            echoCountText.text = $"{count.x}/{count.y}";
         }
     }
 }
