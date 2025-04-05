@@ -1,5 +1,6 @@
 using System;
 using DG.Tweening;
+using Game.Sounds;
 using UnityEngine;
 
 namespace Game.Interactions.Lever
@@ -15,6 +16,8 @@ namespace Game.Interactions.Lever
         [SerializeField] private float _movingDuration = 3f;
         [SerializeField] private Vector3 _movingTarget;
         private Vector3 _movingOriginalPos;
+        
+        [SerializeField] private AudioClip _movingSound;
 
         private void Start()
         {
@@ -28,10 +31,17 @@ namespace Game.Interactions.Lever
             _isOn = !_isOn;
             _leverObj.DOLocalRotate(new Vector3(_isOn ? turnAmount : -turnAmount, 0, 0), 0.5f).OnComplete(() =>
             {
-                _movingObj.DOLocalMove(_isOn ? _movingTarget : _movingOriginalPos, _movingDuration).OnComplete(() =>
+                if (_movingObj)
                 {
+                    SoundManager.PlayWorld(_movingSound, _movingObj.position, maxDistance: 200f);
+                    _movingObj.DOLocalMove(_isOn ? _movingTarget : _movingOriginalPos, _movingDuration).OnComplete(() =>
+                    {
+                        _isTurning = false;
+                    });
+                }
+                else
                     _isTurning = false;
-                });
+                
             });
         }
 

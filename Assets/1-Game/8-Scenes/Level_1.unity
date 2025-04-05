@@ -1239,6 +1239,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 733584441}
     - target: {fileID: 4307226348030972459, guid: f8fcd935d0ca58648a74eead239ee3d2, type: 3}
+      propertyPath: _movingSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6ec2fbcfd1ae55c4ba2df7380d919995, type: 3}
+    - target: {fileID: 4307226348030972459, guid: f8fcd935d0ca58648a74eead239ee3d2, type: 3}
       propertyPath: _movingTarget.x
       value: 0.7881
       objectReference: {fileID: 0}
