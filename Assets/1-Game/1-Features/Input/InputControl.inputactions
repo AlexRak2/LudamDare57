@@ -36,16 +36,25 @@
                     "name": "Sprint",
                     "type": "Button",
                     "id": "e26f3eb3-bcd4-492f-93ca-892b6286a4e6",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Aim",
+                    "name": "RightAction",
                     "type": "Button",
                     "id": "f5733757-494f-4b19-a7c7-3c53fd7ee94e",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LeftAction",
+                    "type": "Button",
+                    "id": "2c8ebdef-50d6-428c-b603-06c58b17da51",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -246,7 +255,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Aim",
+                    "action": "RightAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "57bb918f-3310-4541-8733-fc6f960dcb82",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1621629351647026764}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.768, z: 0}
+  m_LocalPosition: {x: 0, y: 1.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 2310363372891034182}
   - component: {fileID: 7498927863011601927}
   - component: {fileID: 3448755854670408434}
+  - component: {fileID: 2415237944382501089}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -189,6 +190,23 @@ MonoBehaviour:
   SprintFov: 90
   FallFOV: 100
   JumpCount: 0
+--- !u!114 &2415237944382501089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6426072210840051715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6ce6ee2382747acade08e5d66eece29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactionMask:
+    serializedVersion: 2
+    m_Bits: 1
+  _interactionDistance: 3
+  _camera: {fileID: 8941014755100864702}
 --- !u!1 &8817128390797094007
 GameObject:
   m_ObjectHideFlags: 0

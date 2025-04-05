@@ -8,13 +8,13 @@ namespace Game.Input
     {
         private InputControl _inputControl;
 
-        private InputAction _moveAction;
-        private InputAction _lookAction;
-        private InputAction _jumpAction;
-        private InputAction _sprintAction;
-
-        private InputAction _aimAction;
-
+        public static InputAction MoveAction;
+        public static InputAction LookAction;
+        public static InputAction JumpAction;
+        public static InputAction SprintAction;
+        public static InputAction RightAction;
+        public static InputAction LeftAction;
+        
 
         public static Vector2 MoveDir { get; private set; }
         public static Vector2 LookDir { get; private set; }
@@ -33,37 +33,38 @@ namespace Game.Input
 
         private void OnEnable()
         {
-            _moveAction = _inputControl.Player.Move;
-            _lookAction = _inputControl.Player.Look;
-            _jumpAction = _inputControl.Player.Jump;
-            _sprintAction = _inputControl.Player.Sprint;
-            _aimAction = _inputControl.Player.Aim;
+            MoveAction = _inputControl.Player.Move;
+            LookAction = _inputControl.Player.Look;
+            JumpAction = _inputControl.Player.Jump;
+            SprintAction = _inputControl.Player.Sprint;
+            RightAction = _inputControl.Player.RightAction;
+            LeftAction = _inputControl.Player.LeftAction;
 
-            _moveAction.Enable();
-            _lookAction.Enable();
-            _jumpAction.Enable();
-            _sprintAction.Enable();
-            _aimAction.Enable();
+            MoveAction.Enable();
+            LookAction.Enable();
+            JumpAction.Enable();
+            SprintAction.Enable();
+            RightAction.Enable();
+            LeftAction.Enable();
         }
 
         private void OnDisable()
         {
-            _moveAction.Disable();
-            _lookAction.Disable();
-            _jumpAction.Disable();
-            _sprintAction.Disable();
-            _aimAction.Disable();
+            MoveAction.Disable();
+            LookAction.Disable();
+            JumpAction.Disable();
+            SprintAction.Disable();
+            RightAction.Disable();
+            LeftAction.Disable();
         }
 
         private void Update()
         {
-            MoveDir = _moveAction.ReadValue<Vector2>();
-            LookDir = _lookAction.ReadValue<Vector2>();
+            MoveDir = MoveAction.ReadValue<Vector2>();
+            LookDir = LookAction.ReadValue<Vector2>();
+            IsSprinting = SprintAction.IsPressed();
 
-            IsSprinting = _sprintAction.IsPressed();
-            IsAiming = _aimAction.IsPressed();
-
-            Jumping = _jumpAction.WasPressedThisFrame();
+            Jumping = JumpAction.WasPressedThisFrame();
             if (Jumping)
                 OnJump();
 
