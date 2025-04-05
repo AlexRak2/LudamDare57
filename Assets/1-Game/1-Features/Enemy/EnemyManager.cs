@@ -39,7 +39,7 @@ public class EnemyManager : MonoBehaviour
         Gizmos.color = Color.red;
         foreach (var curSpawnPoint in enemySpawnPoints)
         {
-            Gizmos.DrawWireSphere(curSpawnPoint.position, 0.1f);
+            Gizmos.DrawSphere(curSpawnPoint.position, 0.2f);
         }
     }
 

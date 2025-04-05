@@ -48,7 +48,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   navAgent: {fileID: 1230800608229652377}
-  maxMoveDist: 10
+  maxMoveDist: 5
+  maxStartFollowDist: 10
+  minStopFollowDist: 25
 --- !u!195 &1230800608229652377
 NavMeshAgent:
   m_ObjectHideFlags: 0
