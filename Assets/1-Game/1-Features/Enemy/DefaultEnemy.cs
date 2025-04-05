@@ -4,19 +4,20 @@ using UnityEngine.AI;
 public class DefaultEnemy : MonoBehaviour
 {
     public NavMeshAgent navAgent;
+    public float minMoveDist;
     public float maxMoveDist;
-    public float maxStartFollowDist;
-    public float minStopFollowDist;
+    public float minStartFollowDist;
+    public float maxStopFollowDist;
 
     private bool isFollowingPlayer;
     
     public void UpdatePosition(Vector3 playerPosition)
     {
-        if (Vector3.Distance(playerPosition, transform.position) <= maxStartFollowDist)
+        if (Vector3.Distance(playerPosition, transform.position) <= minStartFollowDist)
         {
             isFollowingPlayer = true;
         }
-        else if (Vector3.Distance(playerPosition, transform.position) > minStopFollowDist)
+        else if (Vector3.Distance(playerPosition, transform.position) > maxStopFollowDist)
         {
             isFollowingPlayer = false;
         }
@@ -30,7 +31,7 @@ public class DefaultEnemy : MonoBehaviour
             for (int i = 0; i < corners.Length - 1; i++)
             {
                 curDistance += Vector3.Distance(corners[i], corners[i + 1]);
-                float targetDistance = Mathf.Min(navAgent.remainingDistance / 2, maxMoveDist);
+                float targetDistance = Mathf.Clamp(navAgent.remainingDistance / 2, minMoveDist, maxMoveDist);
                 if (curDistance >= targetDistance)
                 {
                     float offsetDistance = Mathf.Abs(targetDistance - curDistance);
