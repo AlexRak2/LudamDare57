@@ -7,7 +7,7 @@ namespace Game.Player
     [RequireComponent(typeof(Rigidbody))]
     public class PlayerMovement : MonoBehaviour
     {
-        public PlayerMovement Instance;
+        public static PlayerMovement Instance;
         public LayerMask GroundLayer;
 
         public Transform PlayerCam;
