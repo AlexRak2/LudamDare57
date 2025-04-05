@@ -7,7 +7,7 @@ public class EchoCollider : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // Debug.Log("Particle collided with: " + other.name);
-        other.GetComponent<EnemyEcho>().EmitEcho();
+        other.GetComponent<InvisibleObject>().EmitEcho();
     }
 }
 }

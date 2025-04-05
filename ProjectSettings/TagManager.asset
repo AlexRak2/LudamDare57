@@ -6,6 +6,7 @@ TagManager:
   tags:
   - T_Interactable
   - Enemy
+  - Invisible
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - Player
   - EchoShader
   - Enemy
-  - 
+  - Invisible
   - 
   - 
   - 

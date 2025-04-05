@@ -459,6 +459,10 @@ PrefabInstance:
       propertyPath: initialFloat
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8647609101809492613, guid: b967c79aa4444404b89098398bae9243, type: 3}
+      propertyPath: echoFinalScale
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
