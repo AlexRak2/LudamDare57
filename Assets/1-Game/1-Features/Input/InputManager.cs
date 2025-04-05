@@ -15,6 +15,7 @@ namespace Game.Input
         public static InputAction RightAction;
         public static InputAction LeftAction;
         public static InputAction EchoAction;
+        public static InputAction SettingsAction;
         
 
         public static Vector2 MoveDir { get; private set; }
@@ -25,8 +26,7 @@ namespace Game.Input
         public static bool IsAiming;
 
         public static event Action<bool> ProcessOnJump;
-        public static event Action EchoActionTriggered;
-
+        public static event Action EchoActionTriggered, SettingsActionTriggered;
 
         private void Awake()
         {
@@ -42,6 +42,7 @@ namespace Game.Input
             RightAction = _inputControl.Player.RightAction;
             LeftAction = _inputControl.Player.LeftAction;
             EchoAction = _inputControl.Player.EchoAction;
+            SettingsAction = _inputControl.Player.SettingsAction;
 
             MoveAction.Enable();
             LookAction.Enable();
@@ -50,6 +51,7 @@ namespace Game.Input
             RightAction.Enable();
             LeftAction.Enable();
             EchoAction.Enable();
+            SettingsAction.Enable();
         }
 
         private void OnDisable()
@@ -61,6 +63,7 @@ namespace Game.Input
             RightAction.Disable();
             LeftAction.Disable();
             EchoAction.Disable();
+            SettingsAction.Disable();
         }
 
         private void Update()
@@ -73,20 +76,17 @@ namespace Game.Input
             if (Jumping)
                 OnJump();
 
-            if(EchoAction.WasPressedThisFrame())
-            {
-                // Debug.Log("Echo action triggered!");
-                OnEcho();
+            if(EchoAction.WasPressedThisFrame()) {
+                EchoActionTriggered?.Invoke();
+            }
+            if (SettingsAction.WasPressedThisFrame()) {
+                SettingsActionTriggered?.Invoke();
             }
         }
 
         private void OnJump() 
         {
             ProcessOnJump?.Invoke(true);
-        }
-        private void OnEcho()
-        {
-           EchoActionTriggered?.Invoke();
         }
     }
 }

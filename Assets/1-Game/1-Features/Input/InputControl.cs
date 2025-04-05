@@ -153,6 +153,15 @@ public partial class @InputControl: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SettingsAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""bc780cac-ac4e-4e11-a2c8-b68ffd6d0e52"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -373,6 +382,17 @@ public partial class @InputControl: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""EchoAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8afbd597-ad23-4bcf-96ca-76d128b672d7"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SettingsAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -967,6 +987,7 @@ public partial class @InputControl: IInputActionCollection2, IDisposable
         m_Player_RightAction = m_Player.FindAction("RightAction", throwIfNotFound: true);
         m_Player_LeftAction = m_Player.FindAction("LeftAction", throwIfNotFound: true);
         m_Player_EchoAction = m_Player.FindAction("EchoAction", throwIfNotFound: true);
+        m_Player_SettingsAction = m_Player.FindAction("SettingsAction", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1067,6 +1088,7 @@ public partial class @InputControl: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_RightAction;
     private readonly InputAction m_Player_LeftAction;
     private readonly InputAction m_Player_EchoAction;
+    private readonly InputAction m_Player_SettingsAction;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1106,6 +1128,10 @@ public partial class @InputControl: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/EchoAction".
         /// </summary>
         public InputAction @EchoAction => m_Wrapper.m_Player_EchoAction;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/SettingsAction".
+        /// </summary>
+        public InputAction @SettingsAction => m_Wrapper.m_Player_SettingsAction;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1153,6 +1179,9 @@ public partial class @InputControl: IInputActionCollection2, IDisposable
             @EchoAction.started += instance.OnEchoAction;
             @EchoAction.performed += instance.OnEchoAction;
             @EchoAction.canceled += instance.OnEchoAction;
+            @SettingsAction.started += instance.OnSettingsAction;
+            @SettingsAction.performed += instance.OnSettingsAction;
+            @SettingsAction.canceled += instance.OnSettingsAction;
         }
 
         /// <summary>
@@ -1185,6 +1214,9 @@ public partial class @InputControl: IInputActionCollection2, IDisposable
             @EchoAction.started -= instance.OnEchoAction;
             @EchoAction.performed -= instance.OnEchoAction;
             @EchoAction.canceled -= instance.OnEchoAction;
+            @SettingsAction.started -= instance.OnSettingsAction;
+            @SettingsAction.performed -= instance.OnSettingsAction;
+            @SettingsAction.canceled -= instance.OnSettingsAction;
         }
 
         /// <summary>
@@ -1534,6 +1566,13 @@ public partial class @InputControl: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnEchoAction(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "SettingsAction" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSettingsAction(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.
