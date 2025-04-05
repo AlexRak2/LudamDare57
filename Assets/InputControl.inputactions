@@ -36,33 +36,24 @@
                     "name": "Sprint",
                     "type": "Button",
                     "id": "e26f3eb3-bcd4-492f-93ca-892b6286a4e6",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "RightAction",
+                    "name": "Aim",
                     "type": "Button",
                     "id": "f5733757-494f-4b19-a7c7-3c53fd7ee94e",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "LeftAction",
+                    "name": "Echo",
                     "type": "Button",
-                    "id": "2c8ebdef-50d6-428c-b603-06c58b17da51",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "EchoAction",
-                    "type": "Button",
-                    "id": "24928f97-e2e0-4d94-8f46-9517f1afa639",
+                    "id": "9cbf4a43-6123-450f-b17e-63d542dd03a9",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -264,29 +255,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RightAction",
+                    "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "57bb918f-3310-4541-8733-fc6f960dcb82",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "LeftAction",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f5ccbe52-d0c0-47f7-85e7-35cd833cc5c0",
+                    "id": "31b8ee8f-efa7-4fe3-9dff-4382c64159ef",
                     "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "EchoAction",
+                    "action": "Echo",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -144,6 +144,15 @@ public partial class @InputControl: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""EchoAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""24928f97-e2e0-4d94-8f46-9517f1afa639"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -353,6 +362,17 @@ public partial class @InputControl: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""LeftAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f5ccbe52-d0c0-47f7-85e7-35cd833cc5c0"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""EchoAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -946,6 +966,7 @@ public partial class @InputControl: IInputActionCollection2, IDisposable
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_RightAction = m_Player.FindAction("RightAction", throwIfNotFound: true);
         m_Player_LeftAction = m_Player.FindAction("LeftAction", throwIfNotFound: true);
+        m_Player_EchoAction = m_Player.FindAction("EchoAction", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1045,6 +1066,7 @@ public partial class @InputControl: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_RightAction;
     private readonly InputAction m_Player_LeftAction;
+    private readonly InputAction m_Player_EchoAction;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1080,6 +1102,10 @@ public partial class @InputControl: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/LeftAction".
         /// </summary>
         public InputAction @LeftAction => m_Wrapper.m_Player_LeftAction;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/EchoAction".
+        /// </summary>
+        public InputAction @EchoAction => m_Wrapper.m_Player_EchoAction;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1124,6 +1150,9 @@ public partial class @InputControl: IInputActionCollection2, IDisposable
             @LeftAction.started += instance.OnLeftAction;
             @LeftAction.performed += instance.OnLeftAction;
             @LeftAction.canceled += instance.OnLeftAction;
+            @EchoAction.started += instance.OnEchoAction;
+            @EchoAction.performed += instance.OnEchoAction;
+            @EchoAction.canceled += instance.OnEchoAction;
         }
 
         /// <summary>
@@ -1153,6 +1182,9 @@ public partial class @InputControl: IInputActionCollection2, IDisposable
             @LeftAction.started -= instance.OnLeftAction;
             @LeftAction.performed -= instance.OnLeftAction;
             @LeftAction.canceled -= instance.OnLeftAction;
+            @EchoAction.started -= instance.OnEchoAction;
+            @EchoAction.performed -= instance.OnEchoAction;
+            @EchoAction.canceled -= instance.OnEchoAction;
         }
 
         /// <summary>
@@ -1495,6 +1527,13 @@ public partial class @InputControl: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnLeftAction(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "EchoAction" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnEchoAction(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

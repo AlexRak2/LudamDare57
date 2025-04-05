@@ -14,6 +14,7 @@ namespace Game.Input
         public static InputAction SprintAction;
         public static InputAction RightAction;
         public static InputAction LeftAction;
+        public static InputAction EchoAction;
         
 
         public static Vector2 MoveDir { get; private set; }
@@ -24,6 +25,7 @@ namespace Game.Input
         public static bool IsAiming;
 
         public static event Action<bool> ProcessOnJump;
+        public static event Action EchoActionTriggered;
 
 
         private void Awake()
@@ -39,6 +41,7 @@ namespace Game.Input
             SprintAction = _inputControl.Player.Sprint;
             RightAction = _inputControl.Player.RightAction;
             LeftAction = _inputControl.Player.LeftAction;
+            EchoAction = _inputControl.Player.EchoAction;
 
             MoveAction.Enable();
             LookAction.Enable();
@@ -46,6 +49,7 @@ namespace Game.Input
             SprintAction.Enable();
             RightAction.Enable();
             LeftAction.Enable();
+            EchoAction.Enable();
         }
 
         private void OnDisable()
@@ -56,6 +60,7 @@ namespace Game.Input
             SprintAction.Disable();
             RightAction.Disable();
             LeftAction.Disable();
+            EchoAction.Disable();
         }
 
         private void Update()
@@ -68,12 +73,20 @@ namespace Game.Input
             if (Jumping)
                 OnJump();
 
-
+            if(EchoAction.WasPressedThisFrame())
+            {
+                Debug.Log("Echo action triggered!");
+                OnEcho();
+            }
         }
 
         private void OnJump() 
         {
             ProcessOnJump?.Invoke(true);
+        }
+        private void OnEcho()
+        {
+           EchoActionTriggered?.Invoke();
         }
     }
 }
