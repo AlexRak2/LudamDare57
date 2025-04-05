@@ -339,6 +339,7 @@ MonoBehaviour:
   _leftInteractionObj: {fileID: 4678525612041112126}
   _interactionRightText: {fileID: 2422305533322865224}
   _interactionLeftText: {fileID: 4016838372605529952}
+  echoCountText: {fileID: 0}
 --- !u!1 &4095669866558136006
 GameObject:
   m_ObjectHideFlags: 0
