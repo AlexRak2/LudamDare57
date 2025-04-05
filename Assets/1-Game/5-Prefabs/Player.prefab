@@ -184,7 +184,7 @@ MonoBehaviour:
   SensitivityX: 10
   SensitivityY: 10
   AimingSensitivityMultiplier: 0.4
-  FovSpeed: 25
+  FovSpeed: 50
   FallVelocityThreshold: -8
   _normalFov: 80
   SprintFov: 90
