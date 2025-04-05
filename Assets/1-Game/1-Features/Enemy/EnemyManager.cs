@@ -28,7 +28,7 @@ public class EnemyManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             UpdateEnemyPositions(PlayerMovement.Instance.transform.position);
         }
