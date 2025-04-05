@@ -4,7 +4,7 @@ using UnityEngine.AI;
 public class DefaultEnemy : MonoBehaviour
 {
     public NavMeshAgent navAgent;
-    public float minMoveDist;
+    public float maxMoveDist;
     
     public void UpdatePosition(Vector3 playerPosition)
     {
@@ -15,7 +15,7 @@ public class DefaultEnemy : MonoBehaviour
         for (int i = 0; i < corners.Length - 1; i++)
         {
             curDistance += Vector3.Distance(corners[i], corners[i + 1]);
-            float targetDistance = Mathf.Max(navAgent.remainingDistance / 2, minMoveDist);
+            float targetDistance = Mathf.Min(navAgent.remainingDistance / 2, maxMoveDist);
             if (curDistance >= targetDistance)
             {
                 float offsetDistance = Mathf.Abs(targetDistance - curDistance);

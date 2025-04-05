@@ -1664,6 +1664,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Managers
       objectReference: {fileID: 0}
+    - target: {fileID: 8724794662551111551, guid: 68d7a1e87f49d4045948c447848a7748, type: 3}
+      propertyPath: maxEchoCount
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
