@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 
@@ -10,6 +11,16 @@ namespace Game.Interactions.Lever
         private bool _isOn;
         private bool _isTurning;
 
+        [SerializeField] private Transform _movingObj;
+        [SerializeField] private float _movingDuration = 3f;
+        [SerializeField] private Vector3 _movingTarget;
+        private Vector3 _movingOriginalPos;
+
+        private void Start()
+        {
+            _movingOriginalPos = _movingObj.localPosition;
+        }
+
         public override void LeftInputInteract()
         {
             if(_isTurning) return;
@@ -17,7 +28,10 @@ namespace Game.Interactions.Lever
             _isOn = !_isOn;
             _leverObj.DOLocalRotate(new Vector3(_isOn ? turnAmount : -turnAmount, 0, 0), 0.5f).OnComplete(() =>
             {
-                _isTurning = false;
+                _movingObj.DOLocalMove(_isOn ? _movingTarget : _movingOriginalPos, _movingDuration).OnComplete(() =>
+                {
+                    _isTurning = false;
+                });
             });
         }
 

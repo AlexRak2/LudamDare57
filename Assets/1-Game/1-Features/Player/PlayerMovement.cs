@@ -265,10 +265,7 @@ namespace Game.Player
 
         private void HandleCameraFov()
         {
-            if (GetVelocity.y < FallVelocityThreshold)
-                _currentFov = Mathf.Lerp(Cam.fieldOfView, FallFOV, FovSpeed * Time.deltaTime);
-            else
-                _currentFov = Mathf.Lerp(Cam.fieldOfView, InputManager.IsSprinting ? SprintFov : _normalFov,
+            _currentFov = Mathf.Lerp(Cam.fieldOfView, InputManager.IsSprinting ? SprintFov : _normalFov,
                     FovSpeed * Time.deltaTime);
 
             Cam.fieldOfView = Mathf.Lerp(Cam.fieldOfView, _currentFov, FovSpeed * Time.deltaTime);
