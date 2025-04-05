@@ -10,7 +10,15 @@ public class EchoScanner : MonoBehaviour
     [SerializeField] private SphereCollider echoCollider;
     [SerializeField] private float echoInitialScale = 0.1f;
     [SerializeField] private float echoFinalScale = 1f;
-    [SerializeField] private float echoDuration = 1f; 
+    [SerializeField] private float echoDuration = 1f, dimDuration = 2f; 
+    private Material particleMaterial;
+    [SerializeField] private float initialFloat = 0.5f;
+
+    private void Start()
+    {
+        // Get the material from the Particle System's renderer
+        particleMaterial = echoParticleSystem.GetComponent<ParticleSystemRenderer>().material;
+    }
     private void OnEnable()
     {
         InputManager.EchoActionTriggered += OnEchoActionTriggered;
@@ -19,6 +27,7 @@ public class EchoScanner : MonoBehaviour
     {
         echoParticleSystem.Play();
         StartCoroutine(ScaleCollider());
+        StartCoroutine(DimParticleMaterial());
     }
     private void OnDestroy()
     {
@@ -40,6 +49,21 @@ public class EchoScanner : MonoBehaviour
         }
         echoCollider.transform.localScale = finalScale;
         echoCollider.enabled = false;
+    }
+    private IEnumerator DimParticleMaterial()
+    {
+        float elapsedTime = 0f;
+        float finalFloat = 0f;
+        
+        while (elapsedTime < dimDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsedTime / dimDuration);
+            float currentFloat = Mathf.Lerp(initialFloat, finalFloat, t);
+            particleMaterial.SetFloat("_IntersectionDepth", currentFloat);
+            yield return null;
+        }
+        particleMaterial.SetFloat("_IntersectionDepth", finalFloat);
     }
 }
 }
