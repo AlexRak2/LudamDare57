@@ -75,7 +75,7 @@ namespace Game.Input
 
             if(EchoAction.WasPressedThisFrame())
             {
-                Debug.Log("Echo action triggered!");
+                // Debug.Log("Echo action triggered!");
                 OnEcho();
             }
         }
