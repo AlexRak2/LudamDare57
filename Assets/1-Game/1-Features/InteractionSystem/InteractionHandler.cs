@@ -1,5 +1,6 @@
 
 using Game.Input;
+using Game.UI;
 using UnityEngine;
 
 namespace Game.Interactions
@@ -18,13 +19,20 @@ namespace Game.Interactions
 
         private void HandleInteractions()
         {
-
             if (Physics.Raycast(_camera.position, _camera.forward, out RaycastHit hit, _interactionDistance, _interactionMask))
             {
-                IInteractable interactable = hit.collider.GetComponent<IInteractable>();
-
-                if (interactable != null)
+                if (hit.collider.TryGetComponent<IInteractable>(out IInteractable interactable))
                 {
+                    if(interactable.LeftInteractionMessage != string.Empty)
+                        PlayerHud.Instance.ShowLeftInteractionUI(interactable.LeftInteractionMessage);
+                    else
+                        PlayerHud.Instance.HideLeftInteractionUI();
+
+                    if(interactable.RightInteractionMessage != string.Empty)
+                        PlayerHud.Instance.ShowRightInteractionUI(interactable.RightInteractionMessage);
+                    else
+                        PlayerHud.Instance.HideRightInteractionUI();
+                    
                     interactable.HoverInteract();
                     
                     if (InputManager.RightAction.WasPressedThisFrame())
@@ -37,6 +45,16 @@ namespace Game.Interactions
                         interactable.LeftInputInteract();
                     }
                 }
+                else
+                {
+                    PlayerHud.Instance.HideLeftInteractionUI();
+                    PlayerHud.Instance.HideRightInteractionUI();
+                }
+            }
+            else
+            {
+                PlayerHud.Instance.HideLeftInteractionUI();
+                PlayerHud.Instance.HideRightInteractionUI();            
             }
         }
     }

@@ -9,8 +9,8 @@ namespace Game.Interactions.Lever
         [SerializeField] private float turnAmount = 100;
         private bool _isOn;
         private bool _isTurning;
-        
-        public override void RightInputInteract()
+
+        public override void LeftInputInteract()
         {
             if(_isTurning) return;
             
@@ -20,5 +20,7 @@ namespace Game.Interactions.Lever
                 _isTurning = false;
             });
         }
+
+        public override string LeftInteractionMessage => "Turn Lever";
     }
 }

@@ -4,6 +4,7 @@ namespace Game.Interactions
 {
     public class BaseInteractable : MonoBehaviour, IInteractable
     {
+
         public virtual void RightInputInteract()
         {
             
@@ -18,5 +19,9 @@ namespace Game.Interactions
         {
             
         }
+        
+        public virtual string RightInteractionMessage => string.Empty;
+        public virtual string LeftInteractionMessage => string.Empty;
+        
     }
 }
