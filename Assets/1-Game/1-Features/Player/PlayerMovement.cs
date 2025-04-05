@@ -7,6 +7,7 @@ namespace Game.Player
     [RequireComponent(typeof(Rigidbody))]
     public class PlayerMovement : MonoBehaviour
     {
+        public PlayerMovement Instance;
         public LayerMask GroundLayer;
 
         public Transform PlayerCam;
@@ -72,6 +73,11 @@ namespace Game.Player
         public int JumpCount;
 
         private bool _cancellingGrounded;
+
+        private void Awake()
+        {
+            Instance = this;
+        }
 
         private void OnEnable()
         {
