@@ -22,7 +22,8 @@ namespace Game.Interactions.Lever
 
         private void Start()
         {
-            _movingOriginalPos = _movingObj.localPosition;
+            if (_movingObj)
+                _movingOriginalPos = _movingObj.localPosition;
         }
 
         public override void LeftInputInteract()

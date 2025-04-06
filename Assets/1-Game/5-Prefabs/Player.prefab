@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 7498927863011601927}
   - component: {fileID: 3448755854670408434}
   - component: {fileID: 2415237944382501089}
+  - component: {fileID: 9081315777505167645}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -207,6 +208,23 @@ MonoBehaviour:
     m_Bits: 1
   _interactionDistance: 3
   _camera: {fileID: 8941014755100864702}
+--- !u!114 &9081315777505167645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6426072210840051715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7658c8517a5f48f0aa1029a72a49be5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbody: {fileID: 2310363372891034182}
+  _fallDamageThreshold: 10
+  _damage: 10
+  _health: 100
+  impactVelocity: 0
 --- !u!1 &6472028303780750976
 GameObject:
   m_ObjectHideFlags: 0

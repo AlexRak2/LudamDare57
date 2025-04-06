@@ -75,6 +75,17 @@ namespace Game.Player
 
         private bool _cancellingGrounded;
 
+        private bool _isFrozen;
+        public static bool IsFrozen => Instance._isFrozen;
+        public static void Freeze(bool freeze)
+        {
+            Instance._isFrozen = freeze;
+            Instance.enabled = !freeze;
+            Instance._rb.isKinematic = freeze;
+            Instance._moveInput = Vector3.zero;
+            Instance._rb.linearVelocity = Vector3.zero;
+        }
+        
         private void Awake()
         {
             Instance = this;

@@ -1,12 +1,17 @@
 ﻿using System;
+using Game;
 using Game.Player;
+using Game.UI;
+using Game.Waypoint;
 using Unity.Collections;
 using UnityEngine;
 
 namespace LD57.Player
 {
-    public class PlayerFallDamage : MonoBehaviour
+    public class PlayerStats : MonoBehaviour
     {
+        public static PlayerStats Instance;
+        
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private float _fallDamageThreshold = 10f;
         [SerializeField] private float _damage = 5f;
@@ -15,6 +20,19 @@ namespace LD57.Player
         private bool _isFalling = false;
         private float _lowestYVelocity = 0f;
         [SerializeField, ReadOnly] private float impactVelocity = 0f;
+        
+        
+        private void Awake()
+        {
+            Instance = this;
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.V))
+                Die();
+
+        }
 
         private void FixedUpdate()
         {
@@ -53,9 +71,20 @@ namespace LD57.Player
 
             if (_health <= 0f)
             {
-                Debug.Log("Player Died from Fall!");
-                // Add death logic here
+                Die();
             }
+        }
+
+        private void Die()
+        {
+            PlayerMovement.Freeze(true);
+            PlayerHud.Instance.OpenDeathUI();
+        }
+
+        public void Respawn(Vector3 pos)
+        {
+            transform.position = pos;
+            PlayerMovement.Freeze(false);
         }
     }
 }
