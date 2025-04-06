@@ -10,10 +10,17 @@ namespace Game.Sounds
     {
         public static SoundManager Instance;
         private List<AudioSource> _audioSources = new List<AudioSource>();
-
+        [SerializeField] private List<SFXItem> sFXItems = new();
+        private Dictionary<string, AudioClip[]> audioClipsPool = new();
+        private Dictionary<string, float> volumeOverrides = new();
+        [SerializeField] private AudioSource sFXAudioSource;
         private void Awake()
         {
             Instance = this;
+            foreach(SFXItem item in sFXItems) {
+                audioClipsPool.Add(item.name, item.clips);
+                volumeOverrides.Add(item.name, item.volumeOverride);
+            }
         }
 
         public static AudioSource PlayWorld(AudioClip clip, Vector3 worldPos, float volume = 1f, float pitch = 1f, bool randomPitch = true, float randomPitchAmount = 0.1f, float maxDistance = 100f)
@@ -46,5 +53,45 @@ namespace Game.Sounds
                 Destroy(source.gameObject);
             }
         }
+        public void PlayUISFX(string clipName)
+        {
+            AudioClip[] clipRequested;
+            clipRequested = AudioClipExists(clipName);
+
+            if(clipRequested == null) {
+                #if UNITY_EDITOR
+                    Debug.Log($"Clip was not found");
+                #endif
+                return;
+            }
+
+            AudioClip ac = clipRequested[Random.Range(0, clipRequested.Length)];
+            sFXAudioSource.PlayOneShot(ac, volumeOverrides[clipName]);
+        }
+        public AudioClip[] AudioClipExists(string clipName)
+        {
+            if (audioClipsPool.TryGetValue(clipName, out AudioClip[] clipRequested))
+                return clipRequested;
+            else
+                return null;
+        }
+    }
+
+    [Serializable] public struct SFXItem 
+    {
+        public string name;
+        public float volumeOverride;
+        public AudioClip[] clips;
+        public SFXItem(string name, AudioClip[] clips, float volumeOverride)
+        {
+            this.name = name;
+            this.clips = clips;
+            this.volumeOverride = volumeOverride;
+        }
+    }
+    public static class SFXData
+    {
+        public static readonly string ButtonClick = "button-click";
+        public static readonly string ButtonHover = "button-hover";
     }
 }

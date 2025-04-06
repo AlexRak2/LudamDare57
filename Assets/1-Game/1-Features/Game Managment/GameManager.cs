@@ -69,6 +69,10 @@ public class GameManager : MonoBehaviour
     }
     private IEnumerator UnloadSceneCoroutine(SceneIndexes sceneIndex)
     {
+        //check if scene is loaded
+        if(SceneManager.GetSceneByBuildIndex((int)sceneIndex).isLoaded == false) {
+            yield break;
+        }
         AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync((int)sceneIndex);
         unloadOperation.allowSceneActivation = false;
 
@@ -78,7 +82,7 @@ public class GameManager : MonoBehaviour
     }
     public IEnumerator FadeCanvas(bool _in)
     {
-        Debug.Log($"Fade canvas {_in}");
+        // Debug.Log($"Fade canvas {_in}");
 
         float duration = 2f;
         float startAlpha = FadingCanvas.alpha; // Use current alpha as start
@@ -95,7 +99,7 @@ public class GameManager : MonoBehaviour
 
         // Ensure final alpha is exact
         FadingCanvas.alpha = targetAlpha;
-        Debug.Log($"Done fading canvas {_in}");
+        // Debug.Log($"Done fading canvas {_in}");
 
         OnFadeComplete?.Invoke(_in);
     }

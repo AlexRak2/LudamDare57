@@ -2,6 +2,7 @@ using UnityEngine;
 using Game.Input;
 using UnityEngine.Rendering;
 using System;
+using Game.Sounds;
 
 namespace LD57.UI
 {
@@ -36,6 +37,7 @@ public class SettingsManager : MonoBehaviour
     }
     public void ToggleSettingsCanvas()
     {
+        SoundManager.Instance.PlayUISFX(SFXData.ButtonClick);
         canvas.enabled = !canvas.enabled;
         Cursor.lockState = canvas.enabled ? CursorLockMode.None : CursorLockMode.Locked;
         Cursor.visible = canvas.enabled;

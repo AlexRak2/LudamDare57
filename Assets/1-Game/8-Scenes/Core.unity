@@ -686,9 +686,161 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   closeButton: {fileID: 1462580714}
-  mainMenuButton: {fileID: 0}
-  exitGameButton: {fileID: 0}
-  settingsVolume: {fileID: 0}
+  mainMenuButton: {fileID: 2008858076}
+  exitGameButton: {fileID: 1922634823}
+  settingsVolume: {fileID: 142633886}
+--- !u!1 &945503936
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 945503937}
+  - component: {fileID: 945503939}
+  - component: {fileID: 945503938}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &945503937
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945503936}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.13781787, y: -0.018684197, z: 0.33633628}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1568187964}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &945503938
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945503936}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &945503939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945503936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d342272b934460bbc89a4db5ca158ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sFXItems:
+  - name: button-hover
+    volumeOverride: 1
+    clips:
+    - {fileID: 8300000, guid: 907ff314592e7a54693dd2a80ebe3812, type: 3}
+  - name: button-click
+    volumeOverride: 1
+    clips:
+    - {fileID: 8300000, guid: c0fdba756212d9b43bedc23f2469791f, type: 3}
+  sFXAudioSource: {fileID: 945503938}
 --- !u!1001 &978122378
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1175,7 +1327,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 945503937}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1568187965
@@ -1192,7 +1345,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settingsManager: {fileID: 853656701}
   FadingCanvas: {fileID: 1768120909}
-  LoadMainMenuOnStart: 0
+  LoadMainMenuOnStart: 1
 --- !u!1001 &1721249540
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1619,6 +1772,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3299825077901581114, guid: 2243ef7293a164849a40445ac28b4871, type: 3}
   m_PrefabInstance: {fileID: 1825924074}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1922634823 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6833273213185123869, guid: 933818b172352994c8199fc56ce22f91, type: 3}
+  m_PrefabInstance: {fileID: 1721249540}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eab2b4d541a4fb409052c0813dc51a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2008858073
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1733,6 +1897,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 131236423852642727, guid: 933818b172352994c8199fc56ce22f91, type: 3}
   m_PrefabInstance: {fileID: 2008858073}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2008858076 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6833273213185123869, guid: 933818b172352994c8199fc56ce22f91, type: 3}
+  m_PrefabInstance: {fileID: 2008858073}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eab2b4d541a4fb409052c0813dc51a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1045785013041740089
 PrefabInstance:
   m_ObjectHideFlags: 0

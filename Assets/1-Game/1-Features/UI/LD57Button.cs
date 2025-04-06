@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
 using System.Threading.Tasks;
+using Game.Sounds;
 
 namespace LD57.UI
 {
@@ -19,13 +20,13 @@ public class LD57Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     }
     public void OnMouseDown() 
     {
-        // IAudioRequester.Instance.PlaySFX(SFXData.ButtonClick);
+        SoundManager.Instance.PlayUISFX(SFXData.ButtonClick);
     }
     public virtual void OnPointerEnter(PointerEventData eventData)
     {
         if(!button.interactable) return;
 
-        // IAudioRequester.Instance.PlaySFX(SFXData.ButtonHover);
+        SoundManager.Instance.PlayUISFX(SFXData.ButtonHover);
         BloomItemScale(transform, 1.025f, 0.1f);
         if(buttonText != null) BloomItemScaleTemp(buttonText.transform, 1.1f, 0.1f);
         if(iconToScale != null) BloomItemScaleTemp(iconToScale.transform, 1.1f, 0.1f);
