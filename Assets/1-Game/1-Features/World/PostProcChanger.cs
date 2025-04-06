@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class PostProcChanger : MonoBehaviour
 {
@@ -15,9 +16,10 @@ public class PostProcChanger : MonoBehaviour
 
     public IEnumerator Change()
     {
-        while (volume.weight < 0.99f)
+        while ((volume.profile.components[0] as ColorAdjustments).postExposure.value > 2)
         {
-            volume.weight += 0.3f * Time.fixedDeltaTime;
+            (volume.profile.components[0] as ColorAdjustments).postExposure.value -= 2f * Time.fixedDeltaTime;
+            volume.weight += 0.5f * Time.fixedDeltaTime;
             yield return new WaitForFixedUpdate();
         }
     }
