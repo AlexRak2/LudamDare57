@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 2310363372891034182}
-  _fallDamageThreshold: 10
+  _fallDamageThreshold: 20
   _damage: 10
   _health: 100
   _lowestYVelocity: 0
