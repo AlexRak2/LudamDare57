@@ -25,6 +25,7 @@ namespace LD57.Player
         public bool IgnoreFallDamage { get; set; }
         [SerializeField] private AudioSource _fallingAudioSource;
         [SerializeField] private GameObject _jumpScareObject;
+        [SerializeField] private Camera _camera;
 
         public static Action OnRespawn;
         private void Awake()
@@ -120,10 +121,32 @@ namespace LD57.Player
             OnRespawn?.Invoke();
         }
         public IEnumerator GetJumpScared()
-        {
+        {   
             PlayerMovement.Freeze(true);
             _jumpScareObject.SetActive(true);
+            _camera.DOFieldOfView(100, 0.1f).OnComplete(() =>
+            {
+                _camera.DOFieldOfView(80, 0.1f).OnComplete(() =>
+                {
+                    _camera.DOFieldOfView(100, 0.1f).OnComplete(() =>
+                    {
+                        _camera.DOFieldOfView(80, 0.1f).OnComplete(() =>
+                        {
+                            _camera.DOFieldOfView(100, 0.1f).OnComplete(() =>
+                            {
+                                _camera.DOFieldOfView(80, 0.1f).OnComplete(() =>
+                                {
+                                    _camera.DOFieldOfView(100, 0.1f).OnComplete(() =>
+                                    {
+                                        _camera.DOFieldOfView(80, 0.1f);
+                                    });
+                                });
+                            });
 
+                        });
+                    });
+                });
+            });
             yield return new WaitForSeconds(1.25f);
             ApplyEnemyDamage(100f);
         }
