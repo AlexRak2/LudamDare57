@@ -765,7 +765,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0afe8c7d8c82d3b4996e77257e2cace5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxEchoCount: 11
+  maxEchoCount: 50
   currentEchoCount: 0
 --- !u!1 &3445871710561861141
 GameObject:
@@ -1393,7 +1393,7 @@ GameObject:
   - component: {fileID: 3901041260378068389}
   - component: {fileID: 7453247613131095458}
   m_Layer: 0
-  m_Name: WaypointManager
+  m_Name: CheckpointManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

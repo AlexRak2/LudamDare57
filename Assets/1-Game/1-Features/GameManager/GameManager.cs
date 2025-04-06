@@ -14,6 +14,11 @@ namespace Game
             Instance = this;
         }
 
+        private void Start()
+        {
+            _startPosition = PlayerStats.Instance.transform.position;
+        }
+
         public void RestartFromCheckPoint(ICheckpoint checkpoint)
         {
             //perform ui stuff

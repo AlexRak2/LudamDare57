@@ -1,4 +1,5 @@
 ﻿using System;
+using DG.Tweening;
 using Game;
 using Game.Player;
 using Game.UI;
@@ -18,32 +19,29 @@ namespace LD57.Player
         [SerializeField] private float _health = 100f;
 
         private bool _isFalling = false;
-        private float _lowestYVelocity = 0f;
+        [SerializeField, ReadOnly]private float _lowestYVelocity = 0f;
         [SerializeField, ReadOnly] private float impactVelocity = 0f;
-        
-        
+        public bool IgnoreFallDamage { get; set; }
+        [SerializeField] private AudioSource _fallingAudioSource;
+
         private void Awake()
         {
             Instance = this;
-        }
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.V))
-                Die();
-
         }
 
         private void FixedUpdate()
         {
             if (!PlayerMovement.Instance.IsGrounded)
             {
-                if (!_isFalling)
+                if (!_isFalling && _lowestYVelocity < -_fallDamageThreshold)
                 {
                     _isFalling = true;
                     _lowestYVelocity = float.MaxValue; // Reset for new fall
+                    _fallingAudioSource.volume = 0;
+                    _fallingAudioSource.Play();
+                    _fallingAudioSource.DOFade(0.5f, 0.5f);
                 }
-
+            
                 float currentY = _rigidbody.linearVelocity.y;
 
                 // Capture the most negative Y velocity
@@ -52,7 +50,22 @@ namespace LD57.Player
             }
             else if (_isFalling)
             {
-                 impactVelocity = Mathf.Abs(_lowestYVelocity);
+                _fallingAudioSource.DOFade(0f, 0.5f).OnComplete(() =>
+                {
+                    _fallingAudioSource.Stop();
+                });
+                
+                if (IgnoreFallDamage)
+                {
+                    _isFalling = false;
+                    _lowestYVelocity = 0f;
+                    IgnoreFallDamage = false;
+                    
+                    
+                    return;
+                }
+
+                impactVelocity = Mathf.Abs(_lowestYVelocity);
 
                 if (impactVelocity > _fallDamageThreshold)
                 {
@@ -75,7 +88,7 @@ namespace LD57.Player
             }
         }
 
-        private void Die()
+        public static void Die()
         {
             PlayerMovement.Freeze(true);
             PlayerHud.Instance.OpenDeathUI();

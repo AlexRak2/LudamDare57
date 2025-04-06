@@ -54,12 +54,19 @@ namespace Game.UI
 
         public void RestartFromLastCheckPoint()
         {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            
+            _deathCanvasGroup.DOFade(0, 0.5f);
             GameManager.Instance.RestartFromCheckPoint(WaypointHandler.Instance.CurrentWaypoint);
 
         }
 
         public void OpenDeathUI()
         {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            
             _deathCanvasGroup.DOFade(1, 0.5f);
         }
     }
