@@ -108,6 +108,7 @@ namespace LD57.Player
 
         public void Respawn(Vector3 pos)
         {
+            _jumpScareObject.SetActive(false);
             PlayerMovement.Instance.enabled = false;
             PlayerMovement.Rigidbody.isKinematic = true;
             
