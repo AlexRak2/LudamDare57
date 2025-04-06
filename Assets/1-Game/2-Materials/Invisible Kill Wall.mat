@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Invisible Kill Wall
-  m_Shader: {fileID: -6465566751694194690, guid: 1f1fedd62b7d2724bb8539c809417f59, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: d7db2415640a8474e9a155c025c8530e, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -144,7 +144,7 @@ Material:
     - _FresnelColor: {r: 0.25, g: 0.25, b: 0.25, a: 1}
     - _Fresnel_Color: {r: 2, g: 2, b: 2, a: 1}
     - _HologramTiling: {r: 8, g: 8, b: 0, a: 0}
-    - _MainColor: {r: 0.5283019, g: 0, b: 0, a: 1}
+    - _MainColor: {r: 1, g: 1, b: 1, a: 1}
     - _MapColor: {r: 0.078431375, g: 0.078431375, b: 0.078431375, a: 0.078431375}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - baseColorFactor: {r: 1, g: 1, b: 1, a: 1}
