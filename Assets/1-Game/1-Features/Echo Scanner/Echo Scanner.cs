@@ -1,6 +1,7 @@
 using UnityEngine;
 using Game.Input;
 using System.Collections;
+using Game.Sounds;
 
 namespace LD57.Echo
 {
@@ -14,6 +15,7 @@ public class EchoScanner : MonoBehaviour
     [SerializeField] private float echoDuration = 1f, dimDuration = 2f; 
     private Material particleMaterial;
     [SerializeField] private float initialFloat = 0.5f;
+    [SerializeField] private AudioClip echoSound;
 
     private void Awake()
     {
@@ -26,6 +28,7 @@ public class EchoScanner : MonoBehaviour
     }
     public void EmitEcho()
     {
+        SoundManager.PlayWorld(echoSound, transform.position, 0.3f, 1f, false);
         echoParticleSystem.Play();
         StartCoroutine(ScaleCollider());
         StartCoroutine(DimParticleMaterial());

@@ -97,7 +97,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: b2692bdd260749e419bdd51244c923d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -205,7 +205,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: b2692bdd260749e419bdd51244c923d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -298,6 +298,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _leverObj: {fileID: 5779658211428394558}
   turnAmount: 45
+  _movingObj: {fileID: 0}
+  _movingDuration: 3
+  _movingTarget: {x: 0, y: 0, z: 0}
+  _movingSound: {fileID: 0}
+  _leverSound: {fileID: 8300000, guid: e9578303130f05645bf8033edeaa5288, type: 3}
 --- !u!65 &2694376838564072944
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -384,7 +389,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: b2692bdd260749e419bdd51244c923d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

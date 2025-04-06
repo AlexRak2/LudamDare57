@@ -103,6 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meshRenderer: {fileID: 5318143502209332394}
   echoParticleSystem: {fileID: 7176980548461631573}
+  echoSound: {fileID: 8300000, guid: 476633ab02e8b194caaf3203172c5172, type: 3}
 --- !u!136 &9083117348472292363
 CapsuleCollider:
   m_ObjectHideFlags: 0

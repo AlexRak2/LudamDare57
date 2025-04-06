@@ -18,6 +18,7 @@ namespace Game.Interactions.Lever
         private Vector3 _movingOriginalPos;
         
         [SerializeField] private AudioClip _movingSound;
+        [SerializeField] private AudioClip _leverSound;
 
         private void Start()
         {
@@ -27,7 +28,8 @@ namespace Game.Interactions.Lever
         public override void LeftInputInteract()
         {
             if(_isTurning) return;
-            
+
+            SoundManager.PlayWorld(_leverSound, transform.position, 0.5f, 1f, false);
             _isOn = !_isOn;
             _leverObj.DOLocalRotate(new Vector3(_isOn ? turnAmount : -turnAmount, 0, 0), 0.5f).OnComplete(() =>
             {
