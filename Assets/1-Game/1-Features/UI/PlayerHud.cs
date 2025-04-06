@@ -4,6 +4,8 @@ using Game.Waypoint;
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
+using LD57.UI;
+using Game;
 
 namespace Game.UI
 {
@@ -14,11 +16,16 @@ namespace Game.UI
         [SerializeField] private GameObject _rightInteractionObj;
         [SerializeField] private GameObject _leftInteractionObj;
         [SerializeField] private TMP_Text _interactionRightText;
-        [SerializeField] private TMP_Text _interactionLeftText, echoCountText;
+        [SerializeField] private TMP_Text _interactionLeftText, echoCountText, deathReasonText;
         [SerializeField] private CanvasGroup _deathCanvasGroup;
+        bool isFadingToMainMenu = false;
         private void Awake()
         {
             Instance = this;
+        }
+        private void Start() 
+        {
+            LD57.GameManager.Instance.OnFadeComplete += OnFadingCanvasComplete;
         }
 
         public void ShowRightInteractionUI(string message)
@@ -49,7 +56,8 @@ namespace Game.UI
 
         public void Quit()
         {
-            //back to main menu
+            isFadingToMainMenu = true;
+            StartCoroutine(LD57.GameManager.Instance.FadeCanvas(true));
         }
 
         public void RestartFromLastCheckPoint()
@@ -62,12 +70,29 @@ namespace Game.UI
 
         }
 
-        public void OpenDeathUI()
+        public void OpenDeathUI(string _reason)
         {
+            deathReasonText.text = _reason;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             
             _deathCanvasGroup.DOFade(1, 0.5f);
+        }
+
+        public void OnExitGameButtonClicked()
+        {
+            Application.Quit();
+        }
+        private void OnFadingCanvasComplete(bool isActive)
+        {
+            if (isActive && isFadingToMainMenu) {
+                isFadingToMainMenu = false;
+                LD57.GameManager.Instance.LoadMainMenu();
+            }
+        }
+        private void OnDestroy()
+        {
+            LD57.GameManager.Instance.OnFadeComplete -= OnFadingCanvasComplete;
         }
     }
 }

@@ -70,7 +70,7 @@ namespace LD57.Player
                 if (impactVelocity > _fallDamageThreshold)
                 {
                     float damage = (impactVelocity - _fallDamageThreshold) * _damage;
-                    ApplyDamage(damage);
+                    ApplyFallDamage(damage);
                 }
 
                 _isFalling = false;
@@ -84,14 +84,23 @@ namespace LD57.Player
 
             if (_health <= 0f)
             {
-                Die();
+                Die("The enemies got you!");
+            }
+        }
+        private void ApplyFallDamage(float amount)
+        {
+            _health -= amount;
+
+            if (_health <= 0f)
+            {
+                Die("You fell too hard!");
             }
         }
 
-        public static void Die()
+        public static void Die(string _reason)
         {
             PlayerMovement.Freeze(true);
-            PlayerHud.Instance.OpenDeathUI();
+            PlayerHud.Instance.OpenDeathUI(_reason);
         }
 
         public void Respawn(Vector3 pos)

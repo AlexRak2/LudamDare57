@@ -11,12 +11,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/1-Game/8-Scenes/MainMenu.unity
     guid: 1bfe1112180de844698628a647841de3
-  - enabled: 1
+  - enabled: 0
     path: Assets/1-Game/8-Scenes/Mine.unity
     guid: 8487bf5c2f5c11f49a987e8a9168c96e
-  - enabled: 1
+  - enabled: 0
     path: Assets/1-Game/8-Scenes/AlexPrototype.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/1-Game/8-Scenes/Level_1.unity
+    guid: fb269b1732abe674eba3a98fdeb0e6f6
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: ddf4a2c36c299394eaa00ffae16d11b7, type: 3}
   m_UseUCBPForAssetBundles: 0
