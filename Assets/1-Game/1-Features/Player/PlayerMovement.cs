@@ -78,6 +78,7 @@ namespace Game.Player
 
         private bool _isFrozen;
         public static bool IsFrozen => Instance._isFrozen;
+        public static Rigidbody Rigidbody => Instance._rb;
         public static void Freeze(bool freeze)
         {
             Instance._isFrozen = freeze;

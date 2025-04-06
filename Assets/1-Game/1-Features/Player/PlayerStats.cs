@@ -24,6 +24,7 @@ namespace LD57.Player
         public bool IgnoreFallDamage { get; set; }
         [SerializeField] private AudioSource _fallingAudioSource;
 
+        public static Action OnRespawn;
         private void Awake()
         {
             Instance = this;
@@ -105,8 +106,15 @@ namespace LD57.Player
 
         public void Respawn(Vector3 pos)
         {
-            transform.position = pos;
+            PlayerMovement.Instance.enabled = false;
+            PlayerMovement.Rigidbody.isKinematic = true;
+            
+            PlayerMovement.Rigidbody.position = pos;
+    
+            PlayerMovement.Instance.enabled = true;
             PlayerMovement.Freeze(false);
+            
+            OnRespawn?.Invoke();
         }
     }
 }
