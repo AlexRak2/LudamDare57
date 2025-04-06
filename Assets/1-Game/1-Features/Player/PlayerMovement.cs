@@ -2,6 +2,7 @@ using System;
 using Game.Input;
 using UnityEngine;
 using LD57.UI;
+using LD57;
 
 namespace Game.Player
 {
@@ -115,7 +116,7 @@ namespace Game.Player
 
         private void FixedUpdate()
         {
-            if(SettingsManager.Instance.IsSettingsCanvasActive) return;
+            if(LD57.GameManager.Instance.SettingsManager.IsSettingsCanvasActive) return;
 
             if (_rb.linearVelocity.magnitude > MaxSpeedAllowed)
                 _rb.linearVelocity = Vector3.ClampMagnitude(_rb.linearVelocity, MaxSpeedAllowed);
@@ -123,7 +124,7 @@ namespace Game.Player
 
         private void Update()
         {
-            if(SettingsManager.Instance.IsSettingsCanvasActive) return;
+            if(LD57.GameManager.Instance.SettingsManager.IsSettingsCanvasActive) return;
 
             _moveInput = InputManager.MoveDir;
             _lookInput = InputManager.LookDir;
@@ -187,7 +188,7 @@ namespace Game.Player
 
         public void Jump(bool value)
         {
-            if(SettingsManager.Instance.IsSettingsCanvasActive) return;
+            if(LD57.GameManager.Instance.SettingsManager.IsSettingsCanvasActive) return;
             
             if (JumpCount <= 0) return;
 
