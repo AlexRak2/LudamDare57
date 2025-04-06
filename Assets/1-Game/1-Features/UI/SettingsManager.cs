@@ -3,6 +3,7 @@ using Game.Input;
 using UnityEngine.Rendering;
 using System;
 using Game.Sounds;
+using Game.UI;
 
 namespace LD57.UI
 {
@@ -37,6 +38,8 @@ public class SettingsManager : MonoBehaviour
     }
     public void ToggleSettingsCanvas()
     {
+        if(PlayerHud.IsDeathScreenOn) return;
+        
         SoundManager.Instance.PlayUISFX(SFXData.ButtonClick);
         canvas.enabled = !canvas.enabled;
         Cursor.lockState = canvas.enabled ? CursorLockMode.None : CursorLockMode.Locked;

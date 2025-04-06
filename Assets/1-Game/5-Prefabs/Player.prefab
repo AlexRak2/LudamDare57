@@ -78,6 +78,8 @@ GameObject:
   - component: {fileID: 2415237944382501089}
   - component: {fileID: 9081315777505167645}
   - component: {fileID: 1177309399482377875}
+  - component: {fileID: 39362579917069582}
+  - component: {fileID: 2666966901069161866}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -171,7 +173,7 @@ MonoBehaviour:
   Orientation: {fileID: 469560888695502191}
   Cam: {fileID: 5102420949701703467}
   WalkSpeed: 4
-  RunSpeed: 8
+  RunSpeed: 4
   MaxSpeedAllowed: 30
   LandSprintAmount: 0.5
   Gravity: 0.4
@@ -189,8 +191,8 @@ MonoBehaviour:
   FovSpeed: 50
   FallVelocityThreshold: -8
   _normalFov: 80
-  SprintFov: 90
-  FallFOV: 100
+  SprintFov: 80
+  FallFOV: 80
   JumpCount: 0
 --- !u!114 &2415237944382501089
 MonoBehaviour:
@@ -223,7 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 2310363372891034182}
   _fallDamageThreshold: 20
-  _damage: 10
+  _damage: 40
   _health: 100
   _lowestYVelocity: 0
   impactVelocity: 0
@@ -241,7 +243,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 9aa38f4a1fc312146a2b3b59dad495d4, type: 3}
   m_Resource: {fileID: 8300000, guid: 9aa38f4a1fc312146a2b3b59dad495d4, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -251,6 +253,124 @@ AudioSource:
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1.025
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &39362579917069582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6426072210840051715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5cb6a65853c4039abc3e1b77fb561ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footstepClips:
+  - {fileID: 8300000, guid: abe91ff04bc8bbf42a9197fa7192eb41, type: 3}
+  - {fileID: 8300000, guid: e775afbb9a3c9f143a2cf0e8bab30244, type: 3}
+  - {fileID: 8300000, guid: 84b6d54f1aeac214096d931e44bc62e9, type: 3}
+  - {fileID: 8300000, guid: f60f4b3e264786a49bbc0c4b2631827d, type: 3}
+  stepInterval: 0.6
+  _audioSource: {fileID: 2666966901069161866}
+  stepTimer: 0
+  _isWalking: 0
+--- !u!82 &2666966901069161866
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6426072210840051715}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: abe91ff04bc8bbf42a9197fa7192eb41, type: 3}
+  m_Resource: {fileID: 8300000, guid: abe91ff04bc8bbf42a9197fa7192eb41, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 50
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -315,7 +435,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 1.1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

@@ -19,6 +19,8 @@ namespace Game.UI
         [SerializeField] private TMP_Text _interactionLeftText, echoCountText, deathReasonText;
         [SerializeField] private CanvasGroup _deathCanvasGroup;
         bool isFadingToMainMenu = false;
+        
+        public static bool IsDeathScreenOn => Instance._deathCanvasGroup.alpha > 0.6f;
         private void Awake()
         {
             Instance = this;

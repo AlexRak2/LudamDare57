@@ -70,7 +70,7 @@ namespace Game.Player
 
         private Vector2 _moveInput;
         private Vector2 _lookInput;
-
+        public Vector3 MoveInput => _rb.linearVelocity;
         private bool _hasJumped = false;
         public int JumpCount;
 
