@@ -6,6 +6,7 @@ using Game.UI;
 using Game.Waypoint;
 using Unity.Collections;
 using UnityEngine;
+using System.Collections;
 
 namespace LD57.Player
 {
@@ -23,6 +24,7 @@ namespace LD57.Player
         [SerializeField, ReadOnly] private float impactVelocity = 0f;
         public bool IgnoreFallDamage { get; set; }
         [SerializeField] private AudioSource _fallingAudioSource;
+        [SerializeField] private GameObject _jumpScareObject;
 
         public static Action OnRespawn;
         private void Awake()
@@ -79,13 +81,13 @@ namespace LD57.Player
             }
         }
 
-        private void ApplyDamage(float amount)
+        private void ApplyEnemyDamage(float amount)
         {
             _health -= amount;
 
             if (_health <= 0f)
             {
-                Die("The enemies got you!");
+                Die("The dweller in the depths has claimed another soul!");
             }
         }
         private void ApplyFallDamage(float amount)
@@ -115,6 +117,14 @@ namespace LD57.Player
             PlayerMovement.Freeze(false);
             
             OnRespawn?.Invoke();
+        }
+        public IEnumerator GetJumpScared()
+        {
+            PlayerMovement.Freeze(true);
+            _jumpScareObject.SetActive(true);
+
+            yield return new WaitForSeconds(1.25f);
+            ApplyEnemyDamage(100f);
         }
     }
 }
