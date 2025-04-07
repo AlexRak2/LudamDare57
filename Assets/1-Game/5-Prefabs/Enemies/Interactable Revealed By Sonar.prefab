@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27a5334aef95b3f4c8ebf78ef658d63f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshRenderer: {fileID: 7387622458974417555}
+  meshRenderer: {fileID: 0}
   echoParticleSystem: {fileID: 8520603519743863541}
   echoSound: {fileID: 8300000, guid: 476633ab02e8b194caaf3203172c5172, type: 3}
 --- !u!1 &2787619687046542025
@@ -5142,10 +5142,5 @@ PrefabInstance:
 --- !u!4 &4013137123834068629 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a818119e9326a25439c1ab7d2ed27483, type: 3}
-  m_PrefabInstance: {fileID: 3475441420384508286}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &7387622458974417555 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -2973179553663636499, guid: a818119e9326a25439c1ab7d2ed27483, type: 3}
   m_PrefabInstance: {fileID: 3475441420384508286}
   m_PrefabAsset: {fileID: 0}
