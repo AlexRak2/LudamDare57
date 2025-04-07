@@ -183,7 +183,7 @@ namespace Game.Player
 
             if (!_grounded)
             {
-                _rb.AddForce(Physics.gravity * Gravity);
+                _rb.AddForce(Physics.gravity * Gravity * Time.deltaTime);
             }
         }
 
