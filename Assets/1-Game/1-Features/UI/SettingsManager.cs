@@ -38,7 +38,7 @@ public class SettingsManager : MonoBehaviour
     }
     public void ToggleSettingsCanvas()
     {
-        if(PlayerHud.IsDeathScreenOn) return;
+        if(PlayerHud.Instance && PlayerHud.IsDeathScreenOn) return;
         
         SoundManager.Instance.PlayUISFX(SFXData.ButtonClick);
         canvas.enabled = !canvas.enabled;
