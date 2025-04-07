@@ -285,8 +285,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0afe8c7d8c82d3b4996e77257e2cace5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxEchoCount: 50
+  maxEchoCount: 5
   currentEchoCount: 0
+  _cooldownTime: 2
+  _cooldownTillRegenerate: 5
+  _regeneratePerSecond: 1
 --- !u!1 &3306008489577472647
 GameObject:
   m_ObjectHideFlags: 0
