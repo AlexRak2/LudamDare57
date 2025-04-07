@@ -67,6 +67,9 @@ namespace Game.UI
         {
             isFadingToMainMenu = true;
             StartCoroutine(LD57.GameManager.Instance.FadeCanvas(true));
+            
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
 
         public void RestartFromLastCheckPoint()
