@@ -1459,6 +1459,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Patrol Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 8719167146844421406, guid: bea393b8a3fb0f14aa5f0caca042bd5a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

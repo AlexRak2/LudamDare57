@@ -32,7 +32,7 @@ namespace Game.Interactions.Lever
 
             SoundManager.PlayWorld(_leverSound, transform.position, 0.5f, 1f, false);
             _isOn = !_isOn;
-            _leverObj.DOLocalRotate(new Vector3(_isOn ? turnAmount : -turnAmount, 0, 0), 0.5f).OnComplete(() =>
+            _leverObj.DOLocalRotate(new Vector3(_isOn ? turnAmount : -turnAmount, -90, 0), 0.5f).OnComplete(() =>
             {
                 if (_movingObj)
                 {
