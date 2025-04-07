@@ -723,13 +723,13 @@ MonoBehaviour:
   RunSpeed: 4
   MaxSpeedAllowed: 30
   LandSprintAmount: 0.5
-  Gravity: 0.4
+  Gravity: 100
   _groundCheckDistance: 0.8
   _frictionForceAmount: 0.15
   _maxSlopeAngle: 65
   MaxJumps: 1
   _jumpCooldown: 0.25
-  _jumpForce: 9
+  _jumpForce: 7
   _controlAirborne: 0.1
   MaxCameraAngle: 80
   SensitivityX: 10
