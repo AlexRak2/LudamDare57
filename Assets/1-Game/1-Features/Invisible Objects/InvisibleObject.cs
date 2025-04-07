@@ -1,7 +1,9 @@
 using System;
 using UnityEngine;
 using System.Collections;
+#if Unity_Editor
 using UnityEditor;
+#endif
 
 namespace LD57.Echo
 {
@@ -12,7 +14,8 @@ public abstract class InvisibleObject : MonoBehaviour
     Material invisibleMaterial;
     private readonly float startMaterialTransparency = 0f;
     private readonly float endMaterialTransparency = 1.01f;
-
+    
+    #if Unity_Editor
     private void OnValidate()
     {
         if (meshRenderer == null)
@@ -21,6 +24,7 @@ public abstract class InvisibleObject : MonoBehaviour
             EditorUtility.SetDirty(this);
         }
     }
+#endif
 
     protected virtual void Start()
     {
